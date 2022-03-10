@@ -12,6 +12,9 @@
       .select(`
         name,
         description,
+        room (
+          name
+        ),
         boxes (
           name
         )`)
@@ -39,7 +42,7 @@
     <Loader />
   {:then shelves}
     {#each shelves as shelf}
-      <Details summary={[`/shelves/${shelf.name}`, shelf.name]}>
+      <Details summary={[`/shelves/${shelf.name}`, shelf.name, shelf.room.name]}>
         {#if shelf.description}
           <p>{shelf.description}</p>
         {/if}

@@ -1,10 +1,23 @@
 <script>
   export let summary = []
+
+  function buildSummaryHtml(summary) {
+    let html = `<a href={${summary[0]}}>${summary[1]}</a>`
+    if (summary.length === 3) {
+      html = `${html} <span>${summary[2]}</span>`
+    }
+    return html
+  }
 </script>
 
 <style>
   details {
     margin: 0 var(--size-3);
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
   }
 
   :global(p) {
@@ -26,12 +39,12 @@
 {#if $$slots.default}
   <details open>
     <summary>
-      <a href={`${summary[0]}`}>{summary[1]}</a>
+      {@html buildSummaryHtml(summary)}
     </summary>
     <slot />
   </details>
 {:else}
   <summary>
-    <a href={`${summary[0]}`}>{summary[1]}</a>
+    {@html buildSummaryHtml(summary)}
   </summary>
 {/if}
