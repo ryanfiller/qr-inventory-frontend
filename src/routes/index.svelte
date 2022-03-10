@@ -32,9 +32,3 @@
   // })
   
 </script>
-
-<a href='rooms'>all rooms</a>
-
-<a href='shelves'>all shelves</a>
-
-<a href='boxes'>all boxes</a>

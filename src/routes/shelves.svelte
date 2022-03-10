@@ -6,7 +6,13 @@
   async function getData() {
     let { data: boxes, error } = await supabase
       .from('shelves')
-      .select('*')
+      // .select('*')
+      .select(`
+        *,
+        boxes (
+          name
+        )
+      `)
     return boxes
   }
   
