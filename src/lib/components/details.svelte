@@ -6,6 +6,11 @@
   details {
     margin: 0 var(--size-3);
   }
+
+  :global(p) {
+    font-style: italic;
+  }
+
   :global(*:not(details)) > summary {
     padding-left: calc(1.5em + var(--size-2));
     margin: 0;
@@ -19,7 +24,7 @@
 </style>
 
 {#if $$slots.default}
-  <details>
+  <details open>
     <summary>
       <a href={`${summary[0]}`}>{summary[1]}</a>
     </summary>

@@ -20,7 +20,7 @@
             name
           )
         )`)
-    console.error(error)
+    if (error) console.error(error)
     return alphabetize(rooms, 'name')
   }
 
@@ -61,12 +61,6 @@
     return data
   }
 </script>
-
-<style>
-  p {
-    font-style: italic;    
-  }
-</style>
 
 <main>
   {#await getData()}
