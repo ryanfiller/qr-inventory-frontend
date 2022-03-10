@@ -1,6 +1,7 @@
 <script>
   import supabase from '$lib/supabase'
   import Loader from '$lib/components/loader.svelte'
+  import Details from '$lib/components/details.svelte'
 
   async function getData() {
     let { data: rooms, error } = await supabase
@@ -15,18 +16,7 @@
     <Loader />
   {:then rooms}
     {#each rooms as room}
-      {#if room.description}
-        <details>
-          <summary>
-            <a href={`/${room.name}`}>{room.name}</a>
-          </summary>
-          {room.description}
-        </details>
-      {:else}
-        <summary>
-          <a href={`/${room.name}`}>{room.name}</a>
-        </summary>
-      {/if}
+      <Details thing={room} />
     {/each}
   {/await}
 </main>
