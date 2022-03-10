@@ -3,7 +3,7 @@
 
   async function getData() {
     let { data: boxes, error } = await supabase
-      .from('boxes')
+      .from(`boxes`)
       .select('*')
     return boxes
   }

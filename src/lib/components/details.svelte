@@ -1,6 +1,5 @@
 <script>
-  export let urlPrefix
-  export let thing
+  export let summary = []
 </script>
 
 <style>
@@ -19,15 +18,15 @@
   }
 </style>
 
-{#if thing.description}
+{#if $$slots.default}
   <details>
     <summary>
-      <a href={`/${thing.name}`}>{thing.name}</a>
+      <a href={`${summary[0]}`}>{summary[1]}</a>
     </summary>
-    {thing.description}
+    <slot />
   </details>
 {:else}
   <summary>
-    <a href={`/${thing.name}`}>{thing.name}</a>
+    <a href={`${summary[0]}`}>{summary[1]}</a>
   </summary>
 {/if}
