@@ -1,5 +1,6 @@
 <script>
   import supabase from '$lib/supabase'
+  import { alphabetize } from '$lib/helpers'
   import Loader from '$lib/components/loader.svelte'
   import Details from '$lib/components/details.svelte'
 
@@ -7,7 +8,7 @@
     let { data: rooms, error } = await supabase
       .from('rooms')
       .select('name, description')
-    return rooms
+    return alphabetize(rooms, 'name')
   }  
 </script>
 
