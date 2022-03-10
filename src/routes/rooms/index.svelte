@@ -1,6 +1,6 @@
 <script>
   import supabase from '$lib/supabase'
-  import { alphabetize } from '$lib/helpers'
+  import { alphabetize, pluralize } from '$lib/helpers'
   import Loader from '$lib/components/loader.svelte'
   import Details from '$lib/components/details.svelte'
   import CountsList from '$lib/components/counts-list.svelte'
@@ -32,13 +32,13 @@
 
     data.push({
       count: looseBoxCount,
-      text: `loose ${looseBoxCount === 1 ? 'box' : 'boxes'}`
+      text: `loose ${pluralize(looseBoxCount, 'boxes')}`
     })
 
     const shelvesCount = room.shelves.length
     data.push({
       count: shelvesCount,
-      text: shelvesCount === 1 ? 'shelf' : 'shelves'
+      text: pluralize(shelvesCount, 'shelves')
     })
 
     if (shelvesCount > 0) {
@@ -55,7 +55,7 @@
     const totalBoxes = looseBoxCount + shelfBoxCount
     data.push({
       count: totalBoxes,
-      text: `total ${totalBoxes === 1 ? 'box' : 'boxes'}`
+      text: `total ${pluralize(totalBoxes, 'boxes')}`
     })
 
     return data
