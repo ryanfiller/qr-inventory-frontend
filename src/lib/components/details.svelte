@@ -1,4 +1,5 @@
 <script>
+  export let urlPrefix
   export let thing
 </script>
 

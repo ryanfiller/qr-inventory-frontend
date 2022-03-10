@@ -1,6 +1,7 @@
 <script>
   import { page } from '$app/stores'
   import '../app.css'
+  const segment = $page.url.pathname === '/' ? 'homepage' : $page.url.pathname.split('/')[1]
 </script>
 
 <style>
@@ -29,13 +30,15 @@
   </nav>
 </header>
 
-{#if Object.values($page.params).length}
-  <h1>{Object.values($page.params)}</h1>
-{:else}
-  <h1>{$page.url.pathname.split('/').filter(Boolean)}</h1>
+{#if !$page.error}
+  {#if Object.values($page.params).length}
+    <h1>{Object.values($page.params)}</h1>
+  {:else}
+    <h1>{$page.url.pathname.split('/').filter(Boolean)}</h1>
+  {/if}
 {/if}
 
-<slot />
+<slot {segment} />
 
 <footer>
   © Oh, I'm sorry I thought this was America.

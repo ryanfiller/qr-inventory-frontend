@@ -11,7 +11,6 @@
     return alphabetize(rooms, 'name')
   }  
 </script>
-
 <main>
   {#await getData()}
     <Loader />
