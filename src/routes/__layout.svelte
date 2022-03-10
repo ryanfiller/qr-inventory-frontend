@@ -1,11 +1,13 @@
 <script>
   import { page } from '$app/stores'
   import '../app.css'
-
-  console.log($page.url.pathname)
-  // console.log($page.params)
-
 </script>
+
+<style>
+  h1 {
+    margin: 0 var(--size-3);
+  }
+</style>
 
 <header>
   <!-- scan, search, all... -->
