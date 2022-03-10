@@ -1,7 +1,6 @@
 <script>
   import { page } from '$app/stores'
   import '../app.css'
-  const segment = $page.url.pathname === '/' ? 'homepage' : $page.url.pathname.split('/')[1]
 </script>
 
 <style>
@@ -38,7 +37,7 @@
   {/if}
 {/if}
 
-<slot {segment} />
+<slot />
 
 <footer>
   © Oh, I'm sorry I thought this was America.
