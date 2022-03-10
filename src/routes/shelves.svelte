@@ -1,5 +1,3 @@
-<h1>shelves</h1>
-
 <script>
   import supabase from '$lib/supabase'
 

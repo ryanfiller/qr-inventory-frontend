@@ -1,8 +1,14 @@
 <script>
+  import { page } from '$app/stores'
   import '../app.css'
+
+  console.log($page.url.pathname)
+  // console.log($page.params)
+
 </script>
 
 <header>
+  <!-- scan, search, all... -->
   <nav>
     <ul>
       <li>
@@ -20,6 +26,12 @@
     </ul>
   </nav>
 </header>
+
+{#if Object.values($page.params).length}
+  <h1>{Object.values($page.params)}</h1>
+{:else}
+  <h1>{$page.url.pathname.split('/').filter(Boolean)}</h1>
+{/if}
 
 <slot />
 
