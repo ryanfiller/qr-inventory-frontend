@@ -15,9 +15,8 @@
     margin: 0 var(--size-3);
   }
 
-  summary {
-    display: flex;
-    justify-content: space-between;
+  summary :global(span) {
+    float: right;
   }
 
   :global(p) {
@@ -37,7 +36,7 @@
 </style>
 
 {#if $$slots.default}
-  <details open>
+  <details>
     <summary>
       {@html buildSummaryHtml(summary)}
     </summary>
