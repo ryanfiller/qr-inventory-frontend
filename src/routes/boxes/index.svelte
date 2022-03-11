@@ -43,17 +43,15 @@
   
 </script>
 
-<main>
-  {#await getData()}
-    <Loader />
-  {:then boxes}
-    {#each boxes as box}
-      <Details summary={[`/boxes/${box.name}`, box.name, buildBoxLocation(box)]}>
-        {#if box.description}
-          <p>{box.description}</p>
-        {/if}
-        <pre>{JSON.stringify(box.stuff, null, 2)}</pre>
-      </Details>
-    {/each}
-  {/await}
-</main>
+{#await getData()}
+  <Loader />
+{:then boxes}
+  {#each boxes as box}
+    <Details summary={[`/boxes/${box.name}`, box.name, buildBoxLocation(box)]}>
+      {#if box.description}
+        <p>{box.description}</p>
+      {/if}
+      <pre>{JSON.stringify(box.stuff, null, 2)}</pre>
+    </Details>
+  {/each}
+{/await}

@@ -37,17 +37,15 @@
   
 </script>
 
-<main>
-  {#await getData()}
-    <Loader />
-  {:then shelves}
-    {#each shelves as shelf}
-      <Details summary={[`/shelves/${shelf.name}`, shelf.name, shelf.room.name]}>
-        {#if shelf.description}
-          <p>{shelf.description}</p>
-        {/if}
-        <CountsList counts={formatShelfData(shelf)} />
-      </Details>
-    {/each}
-  {/await}
-</main>
+{#await getData()}
+  <Loader />
+{:then shelves}
+  {#each shelves as shelf}
+    <Details summary={[`/shelves/${shelf.name}`, shelf.name, shelf.room.name]}>
+      {#if shelf.description}
+        <p>{shelf.description}</p>
+      {/if}
+      <CountsList counts={formatShelfData(shelf)} />
+    </Details>
+  {/each}
+{/await}

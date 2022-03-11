@@ -68,17 +68,15 @@
   }
 </script>
 
-<main>
-  {#await getData()}
-    <Loader />
-  {:then rooms}
-    {#each rooms as room}
-      <Details summary={[`/rooms/${room.name}`, room.name]}>
-        {#if room.description}
-          <p>{room.description}</p>
-        {/if}
-        <CountsList counts={formatRoomData(room)} />
-      </Details>
-    {/each}
-  {/await}
-</main>
+{#await getData()}
+  <Loader />
+{:then rooms}
+  {#each rooms as room}
+    <Details summary={[`/rooms/${room.name}`, room.name]}>
+      {#if room.description}
+        <p>{room.description}</p>
+      {/if}
+      <CountsList counts={formatRoomData(room)} />
+    </Details>
+  {/each}
+{/await}

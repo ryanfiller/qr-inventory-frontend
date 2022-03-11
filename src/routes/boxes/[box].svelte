@@ -56,10 +56,8 @@
 
 </script>
 
-<main>
-  {#await getData()}
-    <Loader />
-  {:then box}
-    <pre>{JSON.stringify(box, null, 2)}</pre>
-  {/await}
-</main>
+{#await getData()}
+  <Loader />
+{:then box}
+  <pre>{JSON.stringify(box, null, 2)}</pre>
+{/await}

@@ -3,11 +3,17 @@
   import '../app.css'
 
   import Breadcrumbs from '$lib/components/breadcrumbs.svelte'
+
+  const segment = $page.url.pathname.split('/').filter(Boolean)[0]
 </script>
 
 <style>
   :global(body) {
-    padding: var(--size-3)
+    padding: var(--size-3);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--size-3);
   }
 
   /* svelte-announcer is the last-child, so do first-child instead */
@@ -42,12 +48,14 @@
         {Object.values($page.params)}
       </h1>
     {:else}
-      <h1>{$page.url.pathname.split('/').filter(Boolean)}</h1>
+      <h1>{segment}</h1>
     {/if}
   {/if}
 </header>
 
-<slot />
+<main data-segment={segment}>
+  <slot />
+</main>
 
 <footer>
   © Oh, I'm sorry I thought this was America.

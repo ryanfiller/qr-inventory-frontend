@@ -38,20 +38,18 @@
 
 </script>
 
-<main>
-  {#await getData()}
-    <Loader />
-  {:then shelf}
-    {#if shelf.description}
-      <p>{shelf.description}</p>
-    {/if}
-    {#each alphabetize(shelf.boxes, 'name') as box}
-      <Details summary={[`/boxes/${box.name}`, box.name, box.heavy ? 'heavy!': '']}>
-        {#if box.description}
-          <p>{box.description}</p>
-        {/if}
-        <pre>{JSON.stringify(box.stuff, null, 2)}</pre>
-      </Details>
-    {/each}
-  {/await}
-</main>
+{#await getData()}
+  <Loader />
+{:then shelf}
+  {#if shelf.description}
+    <p>{shelf.description}</p>
+  {/if}
+  {#each alphabetize(shelf.boxes, 'name') as box}
+    <Details summary={[`/boxes/${box.name}`, box.name, box.heavy ? 'heavy!': '']}>
+      {#if box.description}
+        <p>{box.description}</p>
+      {/if}
+      <pre>{JSON.stringify(box.stuff, null, 2)}</pre>
+    </Details>
+  {/each}
+{/await}

@@ -37,28 +37,26 @@
 
 </script>
 
-<main>
-  {#await getData()}
-    <Loader />
-  {:then room}
-    <h2>lose boxes:</h2>
-    {#each alphabetize(room.boxes, 'name') as box}
-      <Details summary={[`/boxes/${box.name}`, box.name, box.heavy ? 'heavy!': '']}>
-        {#if box.description}
-          <p>{box.description}</p>
-        {/if}
-        <pre>{JSON.stringify(box, null, 2)}</pre>
-      </Details>
-    {/each}
+{#await getData()}
+  <Loader />
+{:then room}
+  <h2>lose boxes:</h2>
+  {#each alphabetize(room.boxes, 'name') as box}
+    <Details summary={[`/boxes/${box.name}`, box.name, box.heavy ? 'heavy!': '']}>
+      {#if box.description}
+        <p>{box.description}</p>
+      {/if}
+      <pre>{JSON.stringify(box, null, 2)}</pre>
+    </Details>
+  {/each}
 
-    <h2>shelves:</h2>
-    {#each alphabetize(room.shelves, 'name') as shelf}
-      <Details summary={[`/shelves/${shelf.name}`, shelf.name]}>
-        {#if shelf.description}
-          <p>{shelf.description}</p>
-        {/if}
-        <pre>{JSON.stringify(shelf.stuff, null, 2)}</pre>
-      </Details>
-    {/each}
-  {/await}
-</main>
+  <h2>shelves:</h2>
+  {#each alphabetize(room.shelves, 'name') as shelf}
+    <Details summary={[`/shelves/${shelf.name}`, shelf.name]}>
+      {#if shelf.description}
+        <p>{shelf.description}</p>
+      {/if}
+      <pre>{JSON.stringify(shelf.stuff, null, 2)}</pre>
+    </Details>
+  {/each}
+{/await}
