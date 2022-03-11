@@ -2,7 +2,7 @@
   export let summary = []
 
   function buildSummaryHtml(summary) {
-    let html = `<a href={${summary[0]}}>${summary[1]}</a>`
+    let html = `<a href='${summary[0]}'>${summary[1]}</a>`
     if (summary.length === 3) {
       html = `${html} <span>${summary[2]}</span>`
     }
