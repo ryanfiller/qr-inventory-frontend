@@ -1,10 +1,12 @@
 <script>
   import { page } from '$app/stores'
   import '../app.css'
+
+  import Breadcrumbs from '$lib/components/breadcrumbs.svelte'
 </script>
 
 <style>
-  h1 {
+  header {
     margin: 0 var(--size-3);
   }
 </style>
@@ -27,15 +29,18 @@
       </li>
     </ul>
   </nav>
-</header>
 
-{#if !$page.error}
-  {#if Object.values($page.params).length}
-    <h1>{Object.values($page.params)}</h1>
-  {:else}
-    <h1>{$page.url.pathname.split('/').filter(Boolean)}</h1>
+  {#if !$page.error}
+    {#if Object.values($page.params).length}
+      <Breadcrumbs />
+      <h1>
+        {Object.values($page.params)}
+      </h1>
+    {:else}
+      <h1>{$page.url.pathname.split('/').filter(Boolean)}</h1>
+    {/if}
   {/if}
-{/if}
+</header>
 
 <slot />
 
