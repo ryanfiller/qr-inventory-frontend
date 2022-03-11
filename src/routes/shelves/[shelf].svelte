@@ -6,8 +6,6 @@
   import Loader from '$lib/components/loader.svelte'
   import Details from '$lib/components/details.svelte'
 
-  console.log('page', $page.params)
-
   async function getData() {
     let { data: shelf, error } = await supabase
       .from(`shelves`)
@@ -23,17 +21,19 @@
           heavy
         )`)
       .eq('name', $page.params.shelf)
+
     if (error) console.error(error)
+
+    shelf = shelf[0]
 
     $breadcrumbs = ([
       {
-        link: `/rooms/${shelf[0].room.name}`,
-        text: shelf[0].room.name
+        link: `/rooms/${shelf.room.name}`,
+        text: shelf.room.name
       }
     ])
 
-    return shelf[0]
-    // return alphabetize(shelves, 'name')
+    return shelf
   }
 
 </script>
@@ -42,8 +42,10 @@
   {#await getData()}
     <Loader />
   {:then shelf}
-    <!-- {JSON.stringify(shelf)} -->
-    {#each shelf.boxes as box}
+    {#if shelf.description}
+      <p>{shelf.description}</p>
+    {/if}
+    {#each alphabetize(shelf.boxes, 'name') as box}
       <Details summary={[`/boxes/${box.name}`, box.name, box.heavy ? 'heavy!': '']}>
         {#if box.description}
           <p>{box.description}</p>

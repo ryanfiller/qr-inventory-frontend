@@ -6,13 +6,18 @@
 </script>
 
 <style>
-  header {
-    margin: 0 var(--size-3);
+  :global(body) {
+    padding: var(--size-3)
+  }
+
+  /* svelte-announcer is the last-child, so do first-child instead */
+  :global(body > *:not(:first-child)) {
+    margin-top: var(--size-3);
   }
 </style>
 
 <header>
-  <!-- scan, search, all... -->
+  <!-- TODO - scan, search, all... -->
   <nav>
     <ul>
       <li>

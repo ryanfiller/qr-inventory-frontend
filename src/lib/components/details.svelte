@@ -11,10 +11,6 @@
 </script>
 
 <style>
-  details {
-    margin: 0 var(--size-3);
-  }
-
   summary :global(span) {
     float: right;
   }
@@ -30,7 +26,6 @@
 
   :global(details) + details,
   :global(details) + summary {
-    margin: 0 var(--size-3);
     margin-top: var(--size-2)
   }
 </style>

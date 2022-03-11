@@ -1,6 +1,7 @@
 <script>
   import supabase from '$lib/supabase'
   import { alphabetize, pluralize } from '$lib/helpers'
+  import breadcrumbs from '$lib/stores/breadcrumbs.js'
   import Loader from '$lib/components/loader.svelte'
   import Details from '$lib/components/details.svelte'
   import CountsList from '$lib/components/counts-list.svelte'
@@ -19,8 +20,13 @@
           boxes (
             name
           )
-        )`)
+        )
+      `)
+
     if (error) console.error(error)
+
+    $breadcrumbs = ([])
+    
     return alphabetize(rooms, 'name')
   }
 
