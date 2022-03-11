@@ -2,7 +2,7 @@
   import supabase from '$lib/supabase'
   import { alphabetize, pluralize } from '$lib/helpers'
   import breadcrumbs from '$lib/stores/breadcrumbs.js'
-  import Loader from '$lib/components/loader.svelte'
+  import DataLoader from '$lib/components/data-loader.svelte'
   import Details from '$lib/components/details.svelte'
   import CountsList from '$lib/components/counts-list.svelte'
 
@@ -68,9 +68,10 @@
   }
 </script>
 
-{#await getData()}
-  <Loader />
-{:then rooms}
+<DataLoader
+  getDataFucntion={getData}
+  let:data={rooms}
+>
   {#each rooms as room}
     <Details summary={[`/rooms/${room.name}`, room.name]}>
       {#if room.description}
@@ -79,4 +80,4 @@
       <CountsList counts={formatRoomData(room)} />
     </Details>
   {/each}
-{/await}
+</DataLoader>

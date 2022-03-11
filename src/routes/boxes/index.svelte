@@ -1,7 +1,7 @@
 <script>
   import supabase from '$lib/supabase'
   import { alphabetize } from '$lib/helpers'
-  import Loader from '$lib/components/loader.svelte'
+  import DataLoader from '$lib/components/data-loader.svelte'
   import Details from '$lib/components/details.svelte'
 
   async function getData() {
@@ -43,9 +43,10 @@
   
 </script>
 
-{#await getData()}
-  <Loader />
-{:then boxes}
+<DataLoader
+  getDataFucntion={getData}
+  let:data={boxes}
+>
   {#each boxes as box}
     <Details summary={[`/boxes/${box.name}`, box.name, buildBoxLocation(box)]}>
       {#if box.description}
@@ -54,4 +55,4 @@
       <pre>{JSON.stringify(box.stuff, null, 2)}</pre>
     </Details>
   {/each}
-{/await}
+</DataLoader>

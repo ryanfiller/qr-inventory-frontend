@@ -3,8 +3,7 @@
   import supabase from '$lib/supabase'
   import { alphabetize } from '$lib/helpers'
   import breadcrumbs from '$lib/stores/breadcrumbs.js'
-  import Loader from '$lib/components/loader.svelte'
-  import Details from '$lib/components/details.svelte'
+  import DataLoader from '$lib/components/data-loader.svelte'
 
   async function getData() {
     let { data: box, error } = await supabase
@@ -56,8 +55,9 @@
 
 </script>
 
-{#await getData()}
-  <Loader />
-{:then box}
+<DataLoader
+  getDataFucntion={getData}
+  let:data={box}
+>
   <pre>{JSON.stringify(box, null, 2)}</pre>
-{/await}
+</DataLoader>

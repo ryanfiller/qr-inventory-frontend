@@ -16,9 +16,10 @@
     gap: var(--size-3);
   }
 
-  /* svelte-announcer is the last-child, so do first-child instead */
-  :global(body > *:not(:first-child)) {
-    margin-top: var(--size-3);
+  main {
+    /* display: grid;
+    gap: var(--size-3);
+    grid-template-rows: auto-fill; */
   }
 </style>
 
@@ -40,8 +41,11 @@
       </li>
     </ul>
   </nav>
+  
 
-  {#if !$page.error}
+  {#if $page.error}
+    <h1>oh shit!</h1>
+  {:else}
     {#if Object.values($page.params).length}
       <Breadcrumbs />
       <h1>

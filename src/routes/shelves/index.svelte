@@ -1,7 +1,7 @@
 <script>
   import supabase from '$lib/supabase'
   import { alphabetize, pluralize } from '$lib/helpers'
-  import Loader from '$lib/components/loader.svelte'
+  import DataLoader from '$lib/components/data-loader.svelte'
   import Details from '$lib/components/details.svelte'
   import CountsList from '$lib/components/counts-list.svelte'
 
@@ -37,9 +37,10 @@
   
 </script>
 
-{#await getData()}
-  <Loader />
-{:then shelves}
+<DataLoader
+  getDataFucntion={getData}
+  let:data={shelves}
+>
   {#each shelves as shelf}
     <Details summary={[`/shelves/${shelf.name}`, shelf.name, shelf.room.name]}>
       {#if shelf.description}
@@ -48,4 +49,4 @@
       <CountsList counts={formatShelfData(shelf)} />
     </Details>
   {/each}
-{/await}
+</DataLoader>

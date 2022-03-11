@@ -3,7 +3,7 @@
   import supabase from '$lib/supabase'
   import { alphabetize } from '$lib/helpers'
   import breadcrumbs from '$lib/stores/breadcrumbs.js'
-  import Loader from '$lib/components/loader.svelte'
+  import DataLoader from '$lib/components/data-loader.svelte'
   import Details from '$lib/components/details.svelte'
 
   console.log($page.params)
@@ -37,9 +37,10 @@
 
 </script>
 
-{#await getData()}
-  <Loader />
-{:then room}
+<DataLoader
+  getDataFucntion={getData}
+  let:data={room}
+>
   <h2>lose boxes:</h2>
   {#each alphabetize(room.boxes, 'name') as box}
     <Details summary={[`/boxes/${box.name}`, box.name, box.heavy ? 'heavy!': '']}>
@@ -59,4 +60,4 @@
       <pre>{JSON.stringify(shelf.stuff, null, 2)}</pre>
     </Details>
   {/each}
-{/await}
+</DataLoader>
