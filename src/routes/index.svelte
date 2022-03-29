@@ -1,6 +1,6 @@
 <script>
-  import supabase from '$lib/supabase'
-  import {readable, get} from 'svelte/store'
+  // import supabase from '$lib/supabase'
+  // import {readable, get} from 'svelte/store'
 
   // import Post from '$lib/Post.svelte'
   // async function addPost(e) {
@@ -30,5 +30,9 @@
   //     .subscribe()
   //   return () => supabase.removeSubscription(subscription)
   // })
+
+  import Scanner from '$lib/components/scanner.svelte'
   
 </script>
+
+<Scanner />
