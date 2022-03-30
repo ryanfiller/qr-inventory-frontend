@@ -26,6 +26,7 @@
     "prettier-plugin-svelte": "^2.5.0",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.4",
+    "svelte-qr": "^1.0.0",
     "svelte-select": "^4.4.7"
   },
   "type": "module",

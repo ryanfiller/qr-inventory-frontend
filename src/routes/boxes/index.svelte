@@ -8,6 +8,7 @@
     let { data: boxes, error } = await supabase
       .from(`boxes`)
       .select(`
+        uuid,
         name,
         stuff,
         heavy,

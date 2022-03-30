@@ -1,6 +1,5 @@
 <script>
   import { page } from '$app/stores'
-import Box from './boxes/[box].svelte';
 </script>
 
 <style>

@@ -9,6 +9,7 @@
     let { data: box, error } = await supabase
       .from(`boxes`)
       .select(`
+        uuid,
         name,
         stuff,
         heavy,
@@ -61,3 +62,5 @@
 >
   <pre>{JSON.stringify(box, null, 2)}</pre>
 </DataLoader>
+
+<a href={`/boxes/${$page.params.box}/qr`}>qr code</a>
